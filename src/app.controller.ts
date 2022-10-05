@@ -21,4 +21,9 @@ export class AppController {
   getAllAdministrator(): Promise<Administrator[]>{
     return this.administratorService.getAll();
   }
+
+  @Get("api/administrator/:id")
+  getAdministrator(id): Promise<Administrator>{
+    return this.administratorService.getById(3);
+  }
 }
