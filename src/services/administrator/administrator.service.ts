@@ -5,6 +5,7 @@ import { AddAdministratorDto } from 'src/dtos/administrator/add.administrator.dt
 import { Repository } from "typeorm"
 import * as crypto from "crypto";
 import { EditAdminstratorDto } from 'src/dtos/administrator/edit.administrator.dto';
+import { ApiResponse } from 'src/misc/api.response.class';
 
 @Injectable()
 export class AdministratorService {
@@ -14,11 +15,18 @@ export class AdministratorService {
         return this.administrator.find();   
     }
 
-    getById(id: number): Promise<Administrator>{
-        return this.administrator.findOneBy({administratorId: id});
+    async getById(id: number): Promise<Administrator | ApiResponse>{
+        let administrator: Administrator = await this.administrator.findOneBy({administratorId: id});
+
+        if(administrator === null){
+            return new Promise((resolve) => {
+                resolve(new ApiResponse("error", -1002));
+            })
+        }
+        return administrator;
     }
 
-    add(data: AddAdministratorDto): Promise<Administrator>{
+    async add(data: AddAdministratorDto): Promise<Administrator | ApiResponse>{
         const passwordHash = crypto.createHash("SHA512");
         passwordHash.update(data.password);
 
@@ -28,16 +36,31 @@ export class AdministratorService {
         newAdmin.username = data.username;
         newAdmin.passwordHash = passwordHashString;
 
-        return this.administrator.save(newAdmin);
+        return new Promise((resolve, reject) => {
+            this.administrator.save(newAdmin)
+            .then(data => resolve(data))
+            .catch(err => {
+                const respone: ApiResponse = new ApiResponse("error", -1001);
+                resolve(respone);
+            })
+        })
+
+       
     }
 
-    async editById(id: number, data: EditAdminstratorDto): Promise<Administrator>{
+    async editById(id: number, data: EditAdminstratorDto): Promise<Administrator | ApiResponse>{
+        let updateAdmin: Administrator = await this.administrator.findOneBy({administratorId: id});
+
+       if(updateAdmin === null){
+            return new Promise((resolve) => {
+                resolve(new ApiResponse("error", -1002));
+            })
+        }
+
         const passwordHash = crypto.createHash("SHA512");
         passwordHash.update(data.password);
         
         const passwordHashString = passwordHash.digest("hex").toUpperCase();
-
-        let updateAdmin: Administrator = await this.administrator.findOneBy({administratorId: id});
 
         updateAdmin.passwordHash = passwordHashString;
 
