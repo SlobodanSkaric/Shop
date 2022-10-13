@@ -13,7 +13,8 @@ import { Order } from 'entities/Order';
 import { Photo } from 'entities/Photo';
 import { User } from 'entities/User';
 import { UserToken } from 'entities/UserToken';
-import { AppController } from './app.controller';
+import { AdministratorController } from './controllers/api/administrator.controller';
+import { AppController } from './controllers/app.controller';
 import { AdministratorService } from './services/administrator/administrator.service';
 
 @Module({
@@ -44,7 +45,10 @@ import { AdministratorService } from './services/administrator/administrator.ser
       Administrator
     ])
   ],
-  controllers: [AppController],
+  controllers: [
+    AppController,
+    AdministratorController
+  ],
   providers: [AdministratorService]
 })
 export class AppModule {}
