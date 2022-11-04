@@ -3,11 +3,14 @@ import {
   Entity,
   Index,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { ArticelFeature } from "./ArticelFeature";
+import { Article } from "./Article";
 import { Category } from "./Category";
 
 @Index("uq_feature_name_category_id", ["name", "categoryId"], { unique: true })
@@ -32,4 +35,12 @@ export class Feature {
   })
   @JoinColumn([{ name: "category_id", referencedColumnName: "categoryId" }])
   category: Category;
+
+  @ManyToMany(type => Article, article => article.features)
+  @JoinTable({
+    name: "articel_feature",
+    joinColumn: { name: "feature_id", referencedColumnName: "featureId"},
+    inverseJoinColumn: {name: "article_id", referencedColumnName: "articleId"}
+  })
+  article: Article[];
 }
