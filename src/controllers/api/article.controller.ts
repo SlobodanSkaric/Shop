@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Param, Post, Req, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { Crud } from "@nestjsx/crud";
 import { Article } from "entities/Article";
@@ -76,12 +76,14 @@ export class ArticleController{
             }),
             fileFilter: (req, file, callback) => {
                 if(!file.originalname.match(/\.(jpg|png)$/)){
-                    callback(new Error("IS bad extension"), false);
+                    req.fileFilterError = "Is bad extension";
+                    callback(null, false);
                     return;
                 }
 
                 if(!(file.mimetype.includes("jpeg") || file.mimetype.includes("png"))){
-                    callback(new Error("IS bad mimetype"), false);
+                    req.fileFilterError = "Is bad mimetype"
+                    callback(null, false);
                     return;
                 }
 
@@ -89,11 +91,18 @@ export class ArticleController{
             },
             limits:{
                 files: 1,
-                fieldSize: StorageConfig.fileSizeMax
+                fileSize: StorageConfig.fileSizeMax
             }
         })
     )
-    async uploadPhotos(@Param("id") articalId: number, @UploadedFile() photo): Promise<Photo | ApiResponse>{
+    async uploadPhotos(@Param("id") articalId: number, @UploadedFile() photo, @Req() req): Promise<Photo | ApiResponse>{
+        if(req.fileFilterError){
+            return new ApiResponse("error", -4002, req.fileFilterError);
+        }
+
+        if(!photo){
+            return new ApiResponse("error", -4002, "Photo not selected");
+        }
         const newPhoto = new Photo();
         newPhoto.articelId = articalId;
         newPhoto.imagePath = photo.filename;
