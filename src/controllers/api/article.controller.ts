@@ -9,6 +9,10 @@ import { StorageConfig } from "config/sorage.config";
 import { Photo } from "entities/Photo";
 import { PhotoService } from "src/services/photo/photo.service";
 import { ApiResponse } from "src/misc/api.response.class";
+import * as fileType from "file-type";
+import filetype from "magic-bytes.js";
+import * as fs from "fs";
+import * as sharp from "sharp";
 
 @Controller("api/article")
 @Crud({
@@ -103,6 +107,22 @@ export class ArticleController{
         if(!photo){
             return new ApiResponse("error", -4002, "Photo not selected");
         }
+
+        const fileTypeResult = await filetype(fs.readFileSync(photo.path))[0]?.typename;
+
+        if(fileTypeResult === undefined){
+            fs.unlinkSync(photo.path);
+            return new ApiResponse("error", -4002, "Cannot detected file type");
+        }
+
+        if((fileTypeResult != "png") && (fileTypeResult != "jpg") ){
+            fs.unlinkSync(photo.path);
+            return new ApiResponse("error", -4002, "Bead mimtype");
+        }
+
+        await this.imageThumb(photo);
+        await this.imageSmall(photo);
+
         const newPhoto = new Photo();
         newPhoto.articelId = articalId;
         newPhoto.imagePath = photo.filename;
@@ -115,4 +135,41 @@ export class ArticleController{
 
         return photoPath;
     }
+
+    async imageThumb(photo){
+        const photoPath = photo.path;
+        const fileName = photo.filename;
+
+        const destinacionFilePath = StorageConfig.photos + "thumb/" + fileName;
+
+        await sharp(photoPath)
+            .resize({
+                fit: "cover",
+                width: StorageConfig.photoThumb.width,
+                height: StorageConfig.photoThumb.height,
+                background: {
+                    r:255, g:255, b:255, alpha: 0.0
+                }
+            })
+            .toFile(destinacionFilePath);
+    }
+
+    async imageSmall(photo){
+        const photoPath = photo.path;
+        const fileName = photo.filename;
+
+        const destinacionFilePath = StorageConfig.photos + "small/" + fileName;
+
+        await sharp(photoPath)
+            .resize({
+                fit: "cover",
+                width: StorageConfig.photoSmall.width,
+                height: StorageConfig.photoSmall.height,
+                background: {
+                    r:255, g:255, b:255, alpha: 0.0
+                }
+            })
+            .toFile(destinacionFilePath);
+    }
 }
+
