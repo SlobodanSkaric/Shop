@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
-import { Administrator } from 'entities/administrator.entity';
+import { Administrator } from 'src/entities/administrator.entity';
 import { AddAdministratorDto } from "src/dtos/administrator/add.administrator.dto";
 import { AdministratorService } from "src/services/administrator/administrator.service";
 import * as crypto from "crypto";
