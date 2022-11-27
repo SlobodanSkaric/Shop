@@ -23,6 +23,7 @@ export class AuthMiddleware implements NestMiddleware{
         const tokenString = tokenParts[1];
         
         let jwtData: JwtDataAdministratorDto;
+        
         try{
             jwtData = jwt.verify(tokenString, jwtSicret);
         }catch(e){
