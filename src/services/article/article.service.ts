@@ -8,6 +8,7 @@ import { Feature } from "src/entities/Feature";
 import { AddArticleDto } from "src/dtos/article/add.article.dto";
 import { ApiResponse } from "src/misc/api.response.class";
 import { Repository } from "typeorm/repository/Repository";
+import { EditArticleDto } from "src/dtos/article/edit.article.dot";
 
 @Injectable()
 export class ArticleService extends TypeOrmCrudService<Article>{
@@ -55,5 +56,69 @@ export class ArticleService extends TypeOrmCrudService<Article>{
             ]
         })
        
+    }
+
+    async editFullArticle(articleId: number, data: EditArticleDto):Promise<Article | ApiResponse>{
+        const article: Article = await this.article.findOne({where: {articleId: articleId},
+            relations: ["articlePrices","articelFeatures"]
+        });
+
+        if(!article){
+            return new ApiResponse("error", -5001, "Article is not found");
+        }
+
+        article.name = data.name;
+        article.categoryId = data.categoryId;
+        article.excerpt = data.excerpt;
+        article.description = data.description;
+        article.status = data.status;
+        article.isPromoted = data.isPromoted;   
+
+        const editarticel = await this.article.save(article);
+
+        if(!editarticel){
+            return new ApiResponse("error", -5002, "Edit not success");
+        }
+
+        const newPrice: string = Number(data.price).toFixed(2);
+        const lastPrice: string = Number(article.articlePrices[article.articlePrices.length-1].price).toFixed(2);
+
+        if(newPrice != lastPrice){
+            const artPrice = new ArticlePrice();
+
+            artPrice.articleId = articleId;
+            artPrice.price = data.price;
+
+            const saveArticlePrice = await this.articelPrice.save(artPrice);
+
+            if(!saveArticlePrice){
+                return new ApiResponse("error", -5003, "Not save article price");
+            }
+        }
+
+        if(data.features !== null){
+            await this.articelFeature.remove(article.articelFeatures);
+
+            for(let feature of data.features){
+                let newArticleFeature: ArticelFeature = new ArticelFeature();
+                newArticleFeature.articleId = articleId;
+                newArticleFeature.featureId = feature.featuresId;
+                newArticleFeature.value = feature.value;
+    
+                await this.articelFeature.save(newArticleFeature);
+            }
+        }
+
+        return await this.article.findOne({
+            where: {
+                articleId: articleId
+            },
+            relations: [
+                "category",
+                "articelFeatures",
+                "features",
+                "articlePrices"
+            ]
+        })
     }
 }
