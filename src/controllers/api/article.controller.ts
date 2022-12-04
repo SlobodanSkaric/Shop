@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post, Req, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Param, Post, Req, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { Crud } from "@nestjsx/crud";
 import { Article } from "src/entities/Article";
@@ -150,6 +150,32 @@ export class ArticleController{
                 
             })
             .toFile(destinacionFilePath);
+    }
+
+    @Delete(":articleId/deletePhoto/:photoId")
+    async deletePhoto(@Param("articleId") articleId: number, @Param("photoId") photoId: number){
+        const photo = await this.photoService.findOne({
+            where:{
+                articelId: articleId,
+                photoId: photoId
+            }
+        });
+
+        if(!photo){
+            return new ApiResponse("error", -4004, "Photo not found");
+        }
+
+        fs.unlinkSync(StorageConfig.photo.path + photo.imagePath);
+        fs.unlinkSync(StorageConfig.photo.path + StorageConfig.photo.thumb.directory + photo.imagePath);
+        fs.unlinkSync(StorageConfig.photo.path + StorageConfig.photo.small.directory + photo.imagePath);
+
+        const removePhoto = await this.photoService.removePhoto(photoId);
+
+        if(removePhoto.affected == 0){
+            return new ApiResponse("error", -4005, "Can not delete this photo");
+        }
+
+        return new ApiResponse("Ok", 0, "Photo delete")
     }
 }
 
