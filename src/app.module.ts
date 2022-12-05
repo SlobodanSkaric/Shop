@@ -25,6 +25,7 @@ import { ArticleService } from './services/article/article.service';
 import { CategoryService } from './services/category/category.service';
 import { FeatureService } from './services/feature/feature.service';
 import { PhotoService } from './services/photo/photo.service';
+import { UserService } from './services/user/user.service';
 
 @Module({
   imports: [
@@ -57,7 +58,8 @@ import { PhotoService } from './services/photo/photo.service';
       ArticlePrice,
       Feature,
       ArticelFeature,
-      Photo
+      Photo,
+      User
     ])
   ],
   controllers: [
@@ -66,14 +68,15 @@ import { PhotoService } from './services/photo/photo.service';
     CategoryController,
     ArticleController,
     AuthController,
-    FeatureController
+    FeatureController,
   ],
   providers: [
     AdministratorService,
     CategoryService,
     ArticleService,
     PhotoService,
-    FeatureService
+    FeatureService,
+    UserService
   ],
   exports: [
     AdministratorService

@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req } from "@nestjs/common";
+import { Body, Controller, Post, Put, Req } from "@nestjs/common";
 import { LoginAdministratorDto } from "src/dtos/administrator/login.administrator.dto";
 import { ApiResponse } from "src/misc/api.response.class";
 import { AdministratorService } from "src/services/administrator/administrator.service";
@@ -8,10 +8,12 @@ import * as jwt from "jsonwebtoken";
 import { JwtDataAdministratorDto } from "src/dtos/administrator/jwt.data.administrator.dto";
 import { Request } from "express";
 import { jwtSicret } from "config/jwt.sicret";
+import { UserRegistrationDto } from "src/dtos/users/user.registration.dto";
+import { UserService } from "src/services/user/user.service";
 
 @Controller("auth")
 export class AuthController{
-   constructor(private administratorService: AdministratorService){}
+   constructor(private administratorService: AdministratorService, private userService: UserService){}
 
    @Post("login")
    async doLogin(@Body() data: LoginAdministratorDto, @Req() req: Request): Promise<LoginInfoAdministratorDto | ApiResponse>{
@@ -50,5 +52,10 @@ export class AuthController{
         let responseObjec = new LoginInfoAdministratorDto(administrator.administratorId, administrator.username, token);
 
         return new Promise(resolve => resolve(responseObjec));
+   }
+
+   @Put("user/register")
+   async userRegistration(@Body() data: UserRegistrationDto){
+        return await this.userService.registration(data);
    }
 }
