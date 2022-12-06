@@ -38,8 +38,26 @@ export class UserService extends TypeOrmCrudService<User>{
 
         }catch(e){
             return new ApiResponse("error", -6000, "User not create");
+        }       
+    }
+
+    async getById(id: number): Promise<User | ApiResponse>{
+        const user: User = await this.user.findOneBy({userId: id});
+
+        if(user === null){
+            return new ApiResponse("error", -6002, "User not existe");
         }
 
-       
+        return user;
+    }
+
+    async getByEmail(userEmail: string): Promise<User | null>{
+         const user =  await this.user.findOneBy({email: userEmail});
+
+         if(user){
+            return user;
+         }
+
+         return null;
     }
 }

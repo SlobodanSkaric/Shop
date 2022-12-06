@@ -2,12 +2,14 @@ import { NestMiddleware, HttpException, HttpStatus,Injectable } from "@nestjs/co
 import { NextFunction, Request, Response } from "express";
 import { AdministratorService } from "src/services/administrator/administrator.service";
 import * as jwt from "jsonwebtoken";
-import { JwtDataAdministratorDto } from "src/dtos/administrator/jwt.data.administrator.dto";
+import { JwtDataDto } from "src/dtos/auth/jwt.data.dto";
 import { jwtSicret } from "config/jwt.sicret";
+import { UserService } from "src/services/user/user.service";
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware{
-    constructor(private readonly administratorService: AdministratorService){}
+    constructor(private readonly administratorService: AdministratorService, 
+                private readonly userService: UserService){}
     async use(req: Request, res: Response, next: NextFunction) {
         if(!req.headers.authorization){
             throw new HttpException("Token not foind", HttpStatus.UNAUTHORIZED); 
@@ -22,7 +24,7 @@ export class AuthMiddleware implements NestMiddleware{
 
         const tokenString = tokenParts[1];
         
-        let jwtData: JwtDataAdministratorDto;
+        let jwtData: JwtDataDto;
         
         try{
             jwtData = jwt.verify(tokenString, jwtSicret);
@@ -43,11 +45,21 @@ export class AuthMiddleware implements NestMiddleware{
             throw new HttpException("Bad token", HttpStatus.UNAUTHORIZED); 
         }
 
-        const administrator = await this.administratorService.getById(jwtData.administratorId);
+        if(jwtData.role == "administraotr"){
+            const administrator = await this.administratorService.getById(jwtData.id);
 
-        if(!administrator){
-            throw new HttpException("Account not found", HttpStatus.UNAUTHORIZED); 
+            if(!administrator){
+                throw new HttpException("Account not found", HttpStatus.UNAUTHORIZED); 
+            }
+        }else if(jwtData.role == "user"){
+            const administrator = await this.userService.getById(jwtData.id);
+
+            if(!administrator){
+                throw new HttpException("Account not found", HttpStatus.UNAUTHORIZED); 
+            }
         }
+
+        
 
         const curentTime = new Date().getTime() /1000;
 
