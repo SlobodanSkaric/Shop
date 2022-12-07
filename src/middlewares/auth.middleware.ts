@@ -67,6 +67,8 @@ export class AuthMiddleware implements NestMiddleware{
             throw new HttpException("Token exired", HttpStatus.UNAUTHORIZED); 
         }
 
+        req.token = jwtData;
+
         next();
     }
 
