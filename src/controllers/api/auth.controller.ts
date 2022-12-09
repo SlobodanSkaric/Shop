@@ -96,7 +96,7 @@ export class AuthController{
         return new Promise(resolve => resolve(responseObjec));
    }
 
-   @Put("user/register")
+   @Post("user/register")
    async userRegistration(@Body() data: UserRegistrationDto){
         return await this.userService.registration(data);
    }

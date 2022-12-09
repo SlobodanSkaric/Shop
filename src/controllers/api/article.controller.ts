@@ -49,7 +49,22 @@ import { AllowToRoles } from "src/misc/allow.to.roles.descriptor";
         }
     },
     routes:{
-        exclude: ["updateOneBase","replaceOneBase", "deleteOneBase"]
+        only: [
+            "getManyBase",
+            "getOneBase"
+        ],
+        getManyBase: {
+            decorators: [
+                UseGuards(RoleCheckerGuard),
+                AllowToRoles("administraotr","user")
+            ]
+        },
+        getOneBase: {
+            decorators: [
+                UseGuards(RoleCheckerGuard),
+                AllowToRoles("administraotr","user")
+            ]
+        }
     }
 })
 export class ArticleController{
