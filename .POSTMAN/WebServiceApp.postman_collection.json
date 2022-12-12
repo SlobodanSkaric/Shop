@@ -1,0 +1,1463 @@
+{
+	"info": {
+		"_postman_id": "ec098df6-1250-49c7-8846-4cdda3172563",
+		"name": "WebServiceApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18956918"
+	},
+	"item": [
+		{
+			"name": "Adminisrator",
+			"item": [
+				{
+					"name": "GetAllAdministrator",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/administrator/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"administrator",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GetAllAdministratorSuccess",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/administrator/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"administrator",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1075"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"433-1jDP6yqA8DVeaFobZ//tSyygCvg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Oct 2022 09:06:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"administratorId\": 1,\n        \"username\": \"Slobodan\",\n        \"passwordHash\": \"41113A4A78B350A0293BFD8012B4EB1D8ED781C8BE8E1ADD195A1EFAAD4A0ED3DE7677B74AD559FBDB4DA203C2F0C5CA53A7D705DFEB324918DFF83E6C109FF7\"\n    },\n    {\n        \"administratorId\": 2,\n        \"username\": \"Slo\",\n        \"passwordHash\": \"123\"\n    },\n    {\n        \"administratorId\": 3,\n        \"username\": \"Scahra\",\n        \"passwordHash\": \"8181\"\n    },\n    {\n        \"administratorId\": 6,\n        \"username\": \"Slobodan81\",\n        \"passwordHash\": \"FEDF9124CC898452994E3551D50F9D83A393A7D36A375E0C3BB3EFA068BCFDAE3E6F331D24FDA9E0E886EBF203C65D0AB0296BE272FEB6AE7DE3A59E05018DC8\"\n    },\n    {\n        \"administratorId\": 10,\n        \"username\": \"ska\",\n        \"passwordHash\": \"53336DE15A55240D227F42E457E0DE26AAEEA5B1F894FEBFDEE06C59393D6CF7D2B20BEA7941756DE7121C01B126DB30E306DC08686A0A96841C30D5B88F0281\"\n    },\n    {\n        \"administratorId\": 11,\n        \"username\": \"ska1\",\n        \"passwordHash\": \"369E1D5C75627460C0B86A6F1E0CA49C923D096199CD5036F7A01D56AB11AA7AB4CD1B1A1DFEE899EA425F4B1BBB3BF79B1D5C55DB66ABDD9CC7515CB07817D8\"\n    },\n    {\n        \"administratorId\": 13,\n        \"username\": \"Slobodan8187\",\n        \"passwordHash\": \"FEDF9124CC898452994E3551D50F9D83A393A7D36A375E0C3BB3EFA068BCFDAE3E6F331D24FDA9E0E886EBF203C65D0AB0296BE272FEB6AE7DE3A59E05018DC8\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GetAdministartorById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/administrator/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"administrator",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GetAdministratorByIdSuccess",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/administrator/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"administrator",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-owEL7UBXWJoxzdd8E9d11CJeQn8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Oct 2022 09:08:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"administratorId\": 3,\n    \"username\": \"Scahra\",\n    \"passwordHash\": \"8181\"\n}"
+						},
+						{
+							"name": "GetAdministartorByIdError(non existin administrator)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/administrator/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"administrator",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-G9SftpD4JS1LUynREsOVxDuBe4E\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Oct 2022 10:24:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"stautsCode\": -1003,\n    \"message\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "AddNewAdministrator",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"Slobodan71\",\r\n    \"password\" : \"Slobodan17\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/administrator",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"administrator"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "AddNewAdministratorSuccess",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"Slobodan17\",\r\n    \"password\" : \"Slobodan17\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/administrator",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"administrator"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "192"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c0-YovCrqnCgaNpVi22S7VbG6Ne65E\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Oct 2022 09:22:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"username\": \"Slobodan17\",\n    \"passwordHash\": \"0D916C4A7F310F0310B80D396D82A761297192560C1459C66FB96051A3A0C47369A242F17281CF5C46FEC2A4306FFCC693889213E9D2C3B8CAC6B572FAD821E5\",\n    \"administratorId\": 14\n}"
+						},
+						{
+							"name": "AddNewAdministratorError(user unique)",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"Slobodan71\",\r\n    \"password\" : \"Slobodan17\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/administrator",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"administrator"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-MPRMBAGOlnLqXAxsJ4bGNvgchC0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Oct 2022 09:50:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"stautsCode\": -1001,\n    \"message\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit AministratorPassword",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"new Password\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/administrator/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"administrator",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Edit AministratorPasswordSuccess",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\" : \"new Password\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/administrator/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"administrator",
+										"3"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "187"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bb-GIggLF0Hl5jp33nGmHoSCa5wZxs\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Oct 2022 09:57:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"administratorId\": 3,\n    \"username\": \"Scahra\",\n    \"passwordHash\": \"7E93DCF4FA168150053BF5447049ABA2203853ACF0A0F15D85FE15B8F207A87855424AE4A2DA3589064BD272359F75E9B5FBD25DD26B9723233BA86ED9C049C1\"\n}"
+						},
+						{
+							"name": "Edit AministratorPasswordError(non existin administrator)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\" : \"new Password\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/administrator/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"administrator",
+										"4"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-eLfB9hMAoi1vRfSxAZYwD/ZCC1c\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Oct 2022 10:18:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"stautsCode\": -1002,\n    \"message\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "AuthAdminstartor",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Slobodan17\",\r\n    \"password\": \"Slobodan17\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/administrator/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"administrator",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "AuthAdminstartorSuccess",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"Slobodan17\",\r\n    \"password\": \"Slobodan17\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "302"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12e-VAsTyEeGadoZJ8Y414hzUPxvmsg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 13 Nov 2022 16:44:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"administratorId\": 14,\n    \"username\": \"Slobodan17\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbnN0cmF0b3JJZCI6MTQsInVzZXJuYW1lIjoiU2xvYm9kYW4xNyIsImV4cCI6MTY2OTU2NzQ3My43NDksImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI5LjIiLCJpYXQiOjE2NjgzNTc4NzN9.hnHgh6s0rUQIK7jy8C9GoinMo_qETA0CUAYVexa_WAI\"\n}"
+						}
+					]
+				},
+				{
+					"name": "AddPhoto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/Users/sslob/Desktop/sss.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/article/1/uploadPhoto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"article",
+								"1",
+								"uploadPhoto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllFeature",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/feature",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"feature"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GetAllFeatureSuccess",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/feature",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"feature"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3229"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c9d-G7SyHmjHZn/qF9UClbFOhF26FWE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Nov 2022 11:23:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"featureId\": 1,\n        \"name\": \"Kapacitet\",\n        \"categoryId\": 5,\n        \"category\": {\n            \"categoryId\": 5,\n            \"name\": \"Memorijski mediji\",\n            \"imagePath\": \"assets/pc/memo.jpg\",\n            \"parentCategoryId\": 1\n        },\n        \"article\": [\n            {\n                \"articleId\": 1,\n                \"name\": \"ACME HDD SSD 512GB  ssd\",\n                \"categoryId\": 5,\n                \"excerpt\": \"Short description on this new article\",\n                \"description\": \"This is ssd is new very good\",\n                \"status\": \"available\",\n                \"isPromoted\": 1,\n                \"createdAt\": \"2022-04-30T21:29:02.000Z\"\n            },\n            {\n                \"articleId\": 4,\n                \"name\": \"This seample article\",\n                \"categoryId\": 6,\n                \"excerpt\": \"This is some excerpt\",\n                \"description\": \"This is semple description\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2022-11-05T00:25:18.000Z\"\n            },\n            {\n                \"articleId\": 5,\n                \"name\": \"This seample article1\",\n                \"categoryId\": 6,\n                \"excerpt\": \"This is some excerpt1\",\n                \"description\": \"This is semple description1\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2022-11-05T00:26:39.000Z\"\n            }\n        ]\n    },\n    {\n        \"featureId\": 5,\n        \"name\": \"Potrosnja/Snaga\",\n        \"categoryId\": 5,\n        \"category\": {\n            \"categoryId\": 5,\n            \"name\": \"Memorijski mediji\",\n            \"imagePath\": \"assets/pc/memo.jpg\",\n            \"parentCategoryId\": 1\n        },\n        \"article\": []\n    },\n    {\n        \"featureId\": 3,\n        \"name\": \"Tehnologija\",\n        \"categoryId\": 5,\n        \"category\": {\n            \"categoryId\": 5,\n            \"name\": \"Memorijski mediji\",\n            \"imagePath\": \"assets/pc/memo.jpg\",\n            \"parentCategoryId\": 1\n        },\n        \"article\": [\n            {\n                \"articleId\": 2,\n                \"name\": \"ACME HDD1 1TB\",\n                \"categoryId\": 5,\n                \"excerpt\": \"Short description\",\n                \"description\": \"This is acme hdd is ok\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2022-05-05T19:13:04.000Z\"\n            },\n            {\n                \"articleId\": 3,\n                \"name\": \"ACME HDD1 1TB\",\n                \"categoryId\": 5,\n                \"excerpt\": \"Short description\",\n                \"description\": \"This is acme hdd is ok\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2022-05-06T19:40:11.000Z\"\n            },\n            {\n                \"articleId\": 1,\n                \"name\": \"ACME HDD SSD 512GB  ssd\",\n                \"categoryId\": 5,\n                \"excerpt\": \"Short description on this new article\",\n                \"description\": \"This is ssd is new very good\",\n                \"status\": \"available\",\n                \"isPromoted\": 1,\n                \"createdAt\": \"2022-04-30T21:29:02.000Z\"\n            },\n            {\n                \"articleId\": 4,\n                \"name\": \"This seample article\",\n                \"categoryId\": 6,\n                \"excerpt\": \"This is some excerpt\",\n                \"description\": \"This is semple description\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2022-11-05T00:25:18.000Z\"\n            },\n            {\n                \"articleId\": 5,\n                \"name\": \"This seample article1\",\n                \"categoryId\": 6,\n                \"excerpt\": \"This is some excerpt1\",\n                \"description\": \"This is semple description1\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2022-11-05T00:26:39.000Z\"\n            }\n        ]\n    },\n    {\n        \"featureId\": 2,\n        \"name\": \"Tip\",\n        \"categoryId\": 5,\n        \"category\": {\n            \"categoryId\": 5,\n            \"name\": \"Memorijski mediji\",\n            \"imagePath\": \"assets/pc/memo.jpg\",\n            \"parentCategoryId\": 1\n        },\n        \"article\": [\n            {\n                \"articleId\": 2,\n                \"name\": \"ACME HDD1 1TB\",\n                \"categoryId\": 5,\n                \"excerpt\": \"Short description\",\n                \"description\": \"This is acme hdd is ok\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2022-05-05T19:13:04.000Z\"\n            },\n            {\n                \"articleId\": 3,\n                \"name\": \"ACME HDD1 1TB\",\n                \"categoryId\": 5,\n                \"excerpt\": \"Short description\",\n                \"description\": \"This is acme hdd is ok\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2022-05-06T19:40:11.000Z\"\n            },\n            {\n                \"articleId\": 4,\n                \"name\": \"This seample article\",\n                \"categoryId\": 6,\n                \"excerpt\": \"This is some excerpt\",\n                \"description\": \"This is semple description\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2022-11-05T00:25:18.000Z\"\n            },\n            {\n                \"articleId\": 5,\n                \"name\": \"This seample article1\",\n                \"categoryId\": 6,\n                \"excerpt\": \"This is some excerpt1\",\n                \"description\": \"This is semple description1\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2022-11-05T00:26:39.000Z\"\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GetSingleFeature",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/feature/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"feature",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GetSingleFeatureSuccess",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/feature/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"feature",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "831"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33f-xLYv2jTxXYd/SUK4ifO7EIpX1ZY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Nov 2022 11:23:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"featureId\": 1,\n    \"name\": \"Kapacitet\",\n    \"categoryId\": 5,\n    \"category\": {\n        \"categoryId\": 5,\n        \"name\": \"Memorijski mediji\",\n        \"imagePath\": \"assets/pc/memo.jpg\",\n        \"parentCategoryId\": 1\n    },\n    \"article\": [\n        {\n            \"articleId\": 1,\n            \"name\": \"ACME HDD SSD 512GB  ssd\",\n            \"categoryId\": 5,\n            \"excerpt\": \"Short description on this new article\",\n            \"description\": \"This is ssd is new very good\",\n            \"status\": \"available\",\n            \"isPromoted\": 1,\n            \"createdAt\": \"2022-04-30T21:29:02.000Z\"\n        },\n        {\n            \"articleId\": 4,\n            \"name\": \"This seample article\",\n            \"categoryId\": 6,\n            \"excerpt\": \"This is some excerpt\",\n            \"description\": \"This is semple description\",\n            \"status\": \"available\",\n            \"isPromoted\": 0,\n            \"createdAt\": \"2022-11-05T00:25:18.000Z\"\n        },\n        {\n            \"articleId\": 5,\n            \"name\": \"This seample article1\",\n            \"categoryId\": 6,\n            \"excerpt\": \"This is some excerpt1\",\n            \"description\": \"This is semple description1\",\n            \"status\": \"available\",\n            \"isPromoted\": 0,\n            \"createdAt\": \"2022-11-05T00:26:39.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "AddNewFeature",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"www\",\r\n    \"categoryId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/feature",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"feature"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "AddNewFeatureSuccess",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"www\",\r\n    \"categoryId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/feature",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"feature"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "167"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a7-aIJrwRz2Y9SmHaCZcayz6Wba0/8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Nov 2022 14:44:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"featureId\": 6,\n    \"name\": \"www\",\n    \"categoryId\": 1,\n    \"category\": {\n        \"categoryId\": 1,\n        \"name\": \"Racunarske komponente\",\n        \"imagePath\": \"assets/pc.jpg\",\n        \"parentCategoryId\": null\n    },\n    \"article\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "EditFeatre",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cont",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Proizvodjac\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/feature/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"feature",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "EditFeatreSuccess",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Cont",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Proizvodjac\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/feature/6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"feature",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "175"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"af-7gvta8RRZ0GnvSb9VXBOEoQrOjw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Nov 2022 14:50:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"featureId\": 6,\n    \"name\": \"Proizvodjac\",\n    \"categoryId\": 1,\n    \"category\": {\n        \"categoryId\": 1,\n        \"name\": \"Racunarske komponente\",\n        \"imagePath\": \"assets/pc.jpg\",\n        \"parentCategoryId\": null\n    },\n    \"article\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "DeletePhoto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/article/1/deletePhoto/33",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"article",
+								"1",
+								"deletePhoto",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditArticel",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"ACME HDD SSD 512GB  SSS\",\r\n    \"categoryId\": 6,\r\n    \"excerpt\": \"Short description on this new article edit\",\r\n    \"description\": \"This is ssd is new very good edit\",\r\n    \"status\": \"visible\",\r\n    \"isPromoted\": 1,\r\n    \"price\": 170,\r\n    \"features\": null\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/article/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"article",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"slobodan18.skaric81@gmail.com\",\r\n    \"password\": \"slobodan123\",\r\n    \"forname\": \"Slobodan1\",\r\n    \"surname\": \"Skaric1\",\r\n    \"phoneNumber\": \"1234567891\",\r\n    \"postalAddress\": \"Valjevo\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "AddNewUserSuccess",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"slobodan18.skaric81@gmail.com\",\r\n    \"password\": \"slobodan123\",\r\n    \"forname\": \"Slobodan1\",\r\n    \"surname\": \"Skaric1\",\r\n    \"phoneNumber\": \"1234567891\",\r\n    \"postalAddress\": \"Valjevo\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/user/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"user",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "293"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"125-n3I0FLP9L143Hz6hpFuZrwpDVs0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 05 Dec 2022 17:24:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"slobodan18.skaric81@gmail.com\",\n    \"forname\": \"Slobodan1\",\n    \"surname\": \"Skaric1\",\n    \"passwordHash\": \"159C65F4493B3B92816223399CBF4FEE9AABFDE412A49231833D4D77887CFB06AB91621F32CBC1286D0AF8F5D7F1317B122CE2487E7802E70CA7EC3593A5BB1D\",\n    \"phoneNumber\": \"1234567891\",\n    \"postalAddress\": \"Valjevo\",\n    \"userId\": 7\n}"
+						},
+						{
+							"name": "AddNewUserError",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"slobodan18.skaric81@gmail.com\",\r\n    \"password\": \"slobodan123\",\r\n    \"forname\": \"Slobodan1\",\r\n    \"surname\": \"Skaric1\",\r\n    \"phoneNumber\": \"1234567891\",\r\n    \"postalAddress\": \"Valjevo\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/user/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"user",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"41-nQc29Py4xM5kjSqi519yjgzlers\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 05 Dec 2022 17:32:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"stautsCode\": -6000,\n    \"message\": \"User not create\"\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5pc3RyYW90ciIsImlkIjoxNCwiaWRlbnRldGl5IjoiU2xvYm9kYW4xNyIsImV4cCI6MTY3MTU1ODg0NC4yODEsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI5LjIiLCJpYXQiOjE2NzAzNDkyNDR9.4ibqU47B1pKalh3TiSlxYH17HH11Af6nXwe0B1e5v2g",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "AuthUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"slobodan18.skaric81@gmail.com\",\r\n    \"password\": \"slobodan123\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlkIjo3LCJpZGVudGV0aXkiOiJzbG9ib2RhbjE4LnNrYXJpYzgxQGdtYWlsLmNvbSIsImV4cCI6MTY3MTU1OTE1Mi4xOTQsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI5LjIiLCJpYXQiOjE2NzAzNDk1NTJ9.HHo_w-9g__8cI_ybapUsicvWSotRL-xYw49f-EeN3qQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "UserRegistaration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"email\": \"slobodan17.skaric17@gamil.com\",\r\n    \"password\": \"123456\",\r\n    \"forname\": \"Slobodan\",\r\n    \"surname\": \"Skaric\",\r\n    \"phoneNumber\": \"1234567991243456\",\r\n    \"postalAddress\": \"Valjevo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UserRegistarationSuccess",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"email\": \"slobodan17.skaric17@gamil.com\",\r\n    \"password\": \"123456\",\r\n    \"forname\": \"Slobodan\",\r\n    \"surname\": \"Skaric\",\r\n    \"phoneNumber\": \"1234567991243456\",\r\n    \"postalAddress\": \"Valjevo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"user",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "297"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"129-WCOsVZ5n1dY1yjO4tUeUW3Obc4U\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 09 Dec 2022 14:44:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"slobodan17.skaric17@gamil.com\",\n    \"forname\": \"Slobodan\",\n    \"surname\": \"Skaric\",\n    \"passwordHash\": \"BA3253876AED6BC22D4A6FF53D8406C6AD864195ED144AB5C87621B6C233B548BAEAE6956DF346EC8C17F5EA10F35EE3CBC514797ED7DDD3145464E2A0BAB413\",\n    \"phoneNumber\": \"1234567991243456\",\n    \"postalAddress\": \"Valjevo\",\n    \"userId\": 9\n}"
+				}
+			]
+		}
+	]
+}
