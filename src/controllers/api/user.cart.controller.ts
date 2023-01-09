@@ -4,13 +4,16 @@ import { AddArticelToCart } from "src/dtos/cart/add.artocle.to.cart.dto";
 import { ChangeQauntityToCurentCart } from "src/dtos/cart/change.quantiy.to.curentcart.dto";
 import { Cart } from "src/entities/Cart";
 import { CartArticel } from "src/entities/CartArticel";
+import { Order } from "src/entities/Order";
 import { AllowToRoles } from "src/misc/allow.to.roles.descriptor";
+import { ApiResponse } from "src/misc/api.response.class";
 import { RoleCheckerGuard } from "src/misc/role.checker.guard";
 import { CartService } from "src/services/cart/cart.service";
+import { OrderService } from "src/services/order/order.service";
 
 @Controller("api/user/cart")
 export class UserCartController{
-    constructor(private cartService: CartService){}
+    constructor(private cartService: CartService,private order: OrderService){}
 
     async getActiveCartForUserId(userId: number): Promise<Cart>{
         let cart =  await this.cartService.getLastActiveCartbyUserId(userId);
@@ -45,5 +48,14 @@ export class UserCartController{
         const cartId = await this.getActiveCartForUserId(req.token.id);
 
         return await this.cartService.changeQauntity(cartId.cartId, data.articleId, data.quantity)
+    }
+
+    @Post("makeorder")
+    @UseGuards(RoleCheckerGuard)
+    @AllowToRoles("user")
+    async makeOrder(@Req() req: Request): Promise<Order | ApiResponse>{
+        const cartId = await this.getActiveCartForUserId(req.token.id);
+
+       return await this.order.add(cartId.cartId);
     }
 }
