@@ -15,6 +15,8 @@ import { ArticlePrice } from "./ArticlePrice";
 import { CartArticel } from "./CartArticel";
 import { Photo } from "./Photo";
 import { Feature } from "./Feature";
+import * as Validator from "class-validator";
+import { ArticleStatus } from "src/types/article.status.enum";
 
 @Index("fk_article_category_id", ["categoryId"], {})
 @Entity("article")
@@ -23,15 +25,24 @@ export class Article {
   articleId: number;
 
   @Column("varchar", { name: "name", length: 128, default: () => "'0'" })
+  @Validator.IsNotEmpty()
+  @Validator.IsString()
+  @Validator.Length(5,128)
   name: string;
 
   @Column("int", { name: "category_id", unsigned: true, default: () => "'0'" })
   categoryId: number;
 
   @Column("varchar", { name: "excerpt", length: 255, default: () => "'0'" })
+  @Validator.IsNotEmpty()
+  @Validator.IsString()
+  @Validator.Length(10,128)
   excerpt: string;
 
   @Column("text", { name: "description" })
+  @Validator.IsNotEmpty()
+  @Validator.IsString()
+  @Validator.Length(64,10000)
   description: string;
 
   @Column("enum", {
@@ -39,6 +50,10 @@ export class Article {
     enum: ["available", "visible", "hidden"],
     default: () => "'available'",
   })
+  @Validator.IsNotEmpty()
+  @Validator.IsString()
+  //@Validator.IsEnum(ArticleStatus)
+  @Validator.IsIn(["available", "visible", "hidden"])
   status: "available" | "visible" | "hidden";
 
   @Column("tinyint", {
@@ -46,6 +61,8 @@ export class Article {
     unsigned: true,
     default: () => "'0'",
   })
+  @Validator.IsNotEmpty()
+  @Validator.IsIn([0,1])
   isPromoted: number;
 
   @Column("timestamp", {

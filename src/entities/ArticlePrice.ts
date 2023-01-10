@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Article } from "./Article";
+import * as Validator from "class-validator";
 
 @Index("fk_articel_price_article_id", ["articleId"], {})
 @Entity("article_price")
@@ -28,6 +29,13 @@ export class ArticlePrice {
     scale: 2,
     default: () => "'0.00'",
   })
+  @Validator.IsNotEmpty()
+  @Validator.IsNumber({
+    allowInfinity: false,
+    allowNaN: false,
+    maxDecimalPlaces: 2
+  })
+  @Validator.IsPositive()
   price: number;
 
   @Column("timestamp", {
