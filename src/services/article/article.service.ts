@@ -9,6 +9,8 @@ import { AddArticleDto } from "src/dtos/article/add.article.dto";
 import { ApiResponse } from "src/misc/api.response.class";
 import { Repository } from "typeorm/repository/Repository";
 import { EditArticleDto } from "src/dtos/article/edit.article.dot";
+import { ArticelSearchDto } from "src/dtos/article/article.search.dto";
+import { In } from "typeorm";
 
 @Injectable()
 export class ArticleService extends TypeOrmCrudService<Article>{
@@ -114,6 +116,85 @@ export class ArticleService extends TypeOrmCrudService<Article>{
                 articleId: articleId
             },
             relations: [
+                "category",
+                "articelFeatures",
+                "features",
+                "articlePrices"
+            ]
+        })
+    }
+
+    async searcArticel(data: ArticelSearchDto): Promise<Article[]>{
+        const builder = await this.article.createQueryBuilder("article");
+
+        builder.innerJoin("article.articlePrices", "ap", "ap.createdAt = (SELECT ap.created_at FROM article_price AS ap WHERE ap.article_id = article.article_id ORDER BY ap.created_at DESC LIMIT 1)");
+        builder.leftJoin("article.articelFeatures", "af");
+
+        builder.where("article.categoryId = :catId", {catId: data.categoryId});
+
+        if(data.keywords && data.keywords.length > 0){
+            builder.andWhere(`(
+            article.name LIKE :kw OR
+            article.description LIKE :kw OR
+            article.excerpt LIKE :kw
+            )
+            `, {kw: "%" + data.keywords.trim() + "%"});
+        }
+
+        if(data.priceMin && typeof data.priceMin == "number"){
+            builder.andWhere("ap.price >= :minPrice", {minPrice: data.priceMin});
+        }
+
+        if(data.priceMax && typeof data.priceMax == "number"){
+            builder.andWhere("ap.price <= :maxPrice", {maxPrice: data.priceMax});
+        }
+
+        if(data.features && data.features.length > 0){
+            for(const feature of data.features){
+                builder.andWhere("af.featureId = :fId AND af.value IN (:fVals)", {
+                    fId: feature.featuresId,
+                    fVals: feature.values
+                })
+            }
+        }
+        
+        let orderBy = "article.name";
+        let orderDirection: "ASC" | "DESC" = "ASC";
+
+        if(data.orderBy){
+            orderBy = data.orderBy;
+
+            if(data.orderBy == "price"){
+                orderBy = "af.price";
+            }
+        }
+
+        if(data.orderdirection){
+            orderDirection = data.orderdirection;
+        }
+
+        builder.orderBy(orderBy, "ASC");
+        let page = 0;
+        let itemsPrePage: 5 | 10 | 25 | 50 = 25;
+
+        if(typeof data.page === "number"){
+            page = data.page;
+        }
+
+        if(typeof data.itemsPrePage === "number"){
+            itemsPrePage = data.itemsPrePage;
+        }
+
+        builder.skip(page * itemsPrePage);
+        builder.take(itemsPrePage);
+
+        let articleIds = await (await (builder.getMany())).map(article => article.articleId);
+
+        return await this.article.find({
+            where: {
+                articleId: In(articleIds),
+            },
+            relations:[
                 "category",
                 "articelFeatures",
                 "features",

@@ -1,5 +1,5 @@
 import * as Validator from "class-validator";
-import { isArray } from "util";
+
 import { ArticleFeatureCompnent } from "./articel.feature.component.dto";
 
 export class AddArticleDto{
