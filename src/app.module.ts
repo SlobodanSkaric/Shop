@@ -1,6 +1,8 @@
+import { MailerModule } from '@nestjs-modules/mailer';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseConfiguration } from 'config/database.congiguration';
+import { MailConfig } from 'config/mail.config';
 import { Administrator } from 'src/entities/Administrator';
 import { ArticelFeature } from 'src/entities/ArticelFeature';
 import { Article } from 'src/entities/Article';
@@ -14,6 +16,7 @@ import { Photo } from 'src/entities/Photo';
 import { User } from 'src/entities/User';
 import { UserToken } from 'src/entities/UserToken';
 import { AdministratorController } from './controllers/api/administrator.controller';
+import { AdminstratorOrderController } from './controllers/api/administrator.order.controller';
 import { ArticleController } from './controllers/api/article.controller';
 import { AuthController } from './controllers/api/auth.controller';
 import { CategoryController } from './controllers/api/category.controller';
@@ -26,6 +29,7 @@ import { ArticleService } from './services/article/article.service';
 import { CartService } from './services/cart/cart.service';
 import { CategoryService } from './services/category/category.service';
 import { FeatureService } from './services/feature/feature.service';
+import { OrderMailerService } from './services/order/order.mailer.service';
 import { OrderService } from './services/order/order.service';
 import { PhotoService } from './services/photo/photo.service';
 import { UserService } from './services/user/user.service';
@@ -66,7 +70,11 @@ import { UserService } from './services/user/user.service';
       Cart,
       CartArticel,
       Order
-    ])
+    ]),
+    MailerModule.forRoot({
+      transport: "smtps://" + MailConfig.username + ":" + MailConfig.password + "@" + MailConfig.hostname,
+      defaults: MailConfig.senderEmail
+    })
   ],
   controllers: [
     AppController,
@@ -75,7 +83,8 @@ import { UserService } from './services/user/user.service';
     ArticleController,
     AuthController,
     FeatureController,
-    UserCartController
+    UserCartController,
+    AdminstratorOrderController
   ],
   providers: [
     AdministratorService,
@@ -85,7 +94,8 @@ import { UserService } from './services/user/user.service';
     FeatureService,
     UserService,
     CartService,
-    OrderService
+    OrderService,
+    OrderMailerService
   ],
   exports: [
     AdministratorService,
