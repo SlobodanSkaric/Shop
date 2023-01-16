@@ -69,7 +69,8 @@ import { UserService } from './services/user/user.service';
       User,
       Cart,
       CartArticel,
-      Order
+      Order,
+      UserToken
     ]),
     MailerModule.forRoot({
       transport: "smtps://" + MailConfig.username + ":" + MailConfig.password + "@" + MailConfig.hostname,
